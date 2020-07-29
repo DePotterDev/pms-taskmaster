@@ -1,0 +1,19 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+<p>Project {{project}}</p>
+<p>
+    <a href="{% url 'tasks:new_task' project.id %}">Add new task</a>
+</p>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <p><a href="{% url 'tasks:task' task.id %}">{{task.text | linebreaks}}</a></p>
+            </li>
+            {% empty %}
+            <li>No tasks added </li>
+            {% endfor %}
+        </ul>
+       
+
+
+{% endblock content %}

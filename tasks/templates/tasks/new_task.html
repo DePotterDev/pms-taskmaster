@@ -1,0 +1,11 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+<p><a href="{% url 'tasks:project' project.id %}">{{ project }}</a></p>
+
+<p>Add a new entry:</p>
+<form action="{% url 'tasks:new_task' project.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>Add task</button>
+</form>
+{% endblock content %}

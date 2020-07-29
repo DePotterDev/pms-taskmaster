@@ -1,0 +1,7 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+<p>{{ tasks.text }}</p>
+<p>
+    <a href="{% url 'tasks:edit_task' tasks.id %}">Edit Task</a>
+</p>
+{% endblock content %}
