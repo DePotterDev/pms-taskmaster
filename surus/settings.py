@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     'tasks',
+    'users',
 
     # Default django apps.
     'django.contrib.admin',
