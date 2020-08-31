@@ -1,6 +1,20 @@
 {% extends "tasks/base.html" %}
 {% block content %}
+
+
+
+
+
+
 <p>{{ tasks.text }}</p>
+
+<form method="post" action="{% url 'tasks:delete_task' tasks.id %}">
+    {% csrf_token %}
+      <button class="" type="submit" name="submit_delete">
+        Delete
+      </button>
+</form>
+
 <p>
     <a href="{% url 'tasks:edit_task' tasks.id %}">Edit Task</a>
 </p>

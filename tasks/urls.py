@@ -21,3 +21,9 @@ urlpatterns = [
     # Page for editing task
     path('edit_task/<int:task_id>/', views.edit_task, name='edit_task'),
 ]
+
+urlpatterns.extend(
+    [
+        path('delete/<int:task_id>/', views.delete_task, name='delete_task'),
+    ]
+)
