@@ -1,0 +1,13 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+
+<p><a href="{% url 'tasks:project' project.id %}">{{ project }}</a></p>
+
+<p>Edit task section</p>
+<form action="{% url 'tasks:edit_task_section' task_section.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name = "submit">Save changes</button>
+</form>
+
+{% endblock content %}

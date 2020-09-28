@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'mermaidbold';
+    src: url('fonts/mermaid1001-webfont.woff2') format('woff2'),
+         url('fonts/mermaid1001-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'made_sunflowerregular';
+    src: url('fonts/made_sunflower_personal_use-webfont.woff2') format('woff2'),
+         url('fonts/made_sunflower_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+
+
+.logo-font{
+    font-family: 'Permanent Marker';
+}
+
+h1 {
+    font-family: 'mermaidbold', sans-serif;
+    }
+
+a{
+    color: #404040;
+}
+
+.btn-primary{
+    background-color: #C3EAE2;
+    color: black;
+    border: none;
+    border-radius: 2px;
+}
+
+.btn-primary:hover{
+    background-color: #114B4F;
+}
+
+.btn-primary:focus, .btn-primary:active{
+    background-color: #1E8485 !important;
+    border-color: #C3EAE2 !important;
+}
+
+
+/* Base page */
+
+.navbar-custom{
+    background-color: #C3EAE2;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text{
+    color: black;
+}
+
+.navbar-custom .navbar-nav .nav-link{
+    color:grey;
+}
+
+.navbar-brand{
+    font-family: 'Permanent Marker';
+}
+
+/* Index page */
+.index-title{
+    font-size:4.5rem;
+}
+
+.text-frontpage{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    color: #404040;
+}
+
+.btn-index{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+
+#decor{
+    position: absolute;
+    top:0px;
+    right:0px;
+    z-index: -1;
+    width: 42%;
+}
+
+.highlight{
+    background-color:rgba(255, 255, 255, 0.7);
+}
+
+/* Projects Page */
+.project-title{
+    color: #114B4F;
+}
+
+.custom-link{
+    color:#404040;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom-link:hover{
+    color: #114B4F;
+    text-decoration: underline;
+}
+
+.list-group-item a{
+    color:#404040;
+}

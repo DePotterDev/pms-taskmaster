@@ -1,9 +1,15 @@
 {% extends "tasks/base.html" %}
 {% block content %}
-<p>Add a new project</p>
+
+
 <form action="{% url 'tasks:new_project' %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button name = "submit">Add Project</button>
+    <div class="form-group">
+        <label for="project">Add a new project</label>
+        {% csrf_token %}
+        {{ form}}  
+    </div>
+    <button name = "submit" class="btn btn-primary">Add Project</button>
 </form>
+
+
 {% endblock content %}

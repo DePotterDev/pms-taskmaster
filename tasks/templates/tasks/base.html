@@ -1,13 +1,66 @@
-<p>
-    <a href="{% url 'tasks:index' %}">Tasks</a> -
-    <a href="{% url 'tasks:projects' %}">Projects</a> -
-    {% if user.is_authenticated %}
-    Hello, {{ user.username }}.
-    <a href="{%url 'users:logout' %}">Log out</a>
-    {% else %}
-    <a href="{% url 'users:login' %}">Log in</a>
-    <a href="{% url 'users:register' %}">Register</a>-
-    {% endif %}
-</p>
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
 
-{% block content %}{% endblock content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/27adaf188c.js" crossorigin="anonymous"></script>
+    <title>TaskMaster</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light navbar-custom mb-4 border">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                          <a class="navbar-brand" href="{% url 'tasks:index' %}"> <img src="{% static 'images/logo.png' %}" alt="logo taskmaster" style="width:30px;"> TaskMaster<span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'tasks:projects' %}">Projects</a>
+                      </li>
+             </ul>
+             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <span class="navbar-text">
+                        {% if user.is_authenticated %}
+                        Hello, {{ user.username }}.
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'users:logout' %}">Log out</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container"> 
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    {% block scripts %}
+        <script src="{% static 'js/app.js' %}"></script>
+    {% endblock %}
+    
+  
+</body>
+
+</html>

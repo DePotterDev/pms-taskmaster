@@ -1,21 +1,74 @@
 {% extends "tasks/base.html" %}
 {% block content %}
 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'tasks:projects' %}">Projects</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'tasks:project' project.id %}">Project</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'tasks:task_section' task_section.id %}">Task Section</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Task</li>
+  </ol>
+</nav>
+
+
+<div class="row m-0">
+<div class="card col-3 mr-3">
+  <div class="card-body">
+    <h4 class="card-title">
+      Comments:
+    </h4>
+
+    <p class="card-text">
+      <ul>
+        <li>comment</li>
+        <li>comment</li>
+        <li>comment</li>
+        <li>comment</li>
+        <li>comment</li>
+        <li>comment</li>
+        <li>comment</li>
+        <li>comment</li>
+      </ul>
+    </p>
+  </div>
+</div>
+
+<div class="card col-8">
+  <div class="card-body">
+    <h1 class="card-title">
+      {{ tasks.title}}
+    </h1>
+    <h5 class="card-subtitle">
+      <div class="alert alert-danger">
+        Priority: {{ tasks.get_priority_display }}
+       </div>
+    </h5>
+    <p class="card-text">
+      {{ tasks.text }}
+    </p>
 
 
 
+  <a class="btn btn-primary" href="{% url 'tasks:edit_task' tasks.id %}">Edit Task</a>
 
 
-<p>{{ tasks.text }}</p>
-
-<form method="post" action="{% url 'tasks:delete_task' tasks.id %}">
+  <form action="{% url 'tasks:delete_task' tasks.id %}" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete {{tasks.title}} ');">
     {% csrf_token %}
-      <button class="" type="submit" name="submit_delete">
-        Delete
-      </button>
-</form>
+    <input type="hidden" name="tasks_id" value="{{ tasks.id }}" />
+    <button type="submit"  class="btn btn-primary">
+        <span class="">delete</span>
+    </button>
+  </form>
+  
+    </div>
 
-<p>
-    <a href="{% url 'tasks:edit_task' tasks.id %}">Edit Task</a>
-</p>
+
+  </div>
+</div>
+
+<a href="{% url 'tasks:task_section' task_section.id %}" class="btn btn-primary mt-3"><i class="far fa-arrow-alt-circle-left"></i> Back</a>
+
+
+
+
 {% endblock content %}

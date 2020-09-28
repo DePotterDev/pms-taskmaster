@@ -1,23 +1,59 @@
 {% extends "tasks/base.html" %}
 {% block content %}
-<p>Projects</p>
-<ul>
+
+<h1>Project Hub</h1>
+
+<form action="{% url 'tasks:new_project' %}" method="POST">
+    <div class="form-group">
+        <label for="new_project" class="text-muted">Add New Project:</label>
+        {% csrf_token %}
+        {{form}}
+        <button class="btn btn-primary mt-3" type="submit" name="Create Project">Add Project</button>
+    </div>
+</form>
+
+<div class="row">
     {% for project in projects %}
-    <li><a href="{% url 'tasks:project' project.id %}">{{project}}</a></li>
-        <ul>
-            {% for task in project.task_set.all %}
-            <li><a href="{% url 'tasks:task' task.id %}">{{task}}</a></li>
+
+
+        <div class="col-6">
+            <div class="card my-4">
+                <h5 class="card-header">
+                    <a href="{% url 'tasks:project' project.id %}" class="projects-title">{{project}}</a>
+
+
+                    <form action="{% url 'tasks:delete_project' project.id %}" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete {{project.text}} ');">
+                        {% csrf_token %}
+                        <input type="hidden" name="project_id" value="{{ project.id }}" />
+                        <button type="submit"  class="float-right custom-link">
+                            Delete
+                        </button>
+                      </form>
+                    
+
+                    <a href="{% url 'tasks:edit_project' project.id %}" class="float-right mr-1 custom-link">Edit</a>
+                 
+                </h5>
+                
+    
+                <ul class="list-group list-group-flush">   
+                    {% for task_section in project.tasksection_set.all %}
+                    <li class="list-group-item"><a href="{% url 'tasks:task_section' task_section.id %}" class="pl-3">{{task_section.title}}</a></li>
+                    {% empty %}
+                    <p class="pl-4 pt-2">No tasks added </p>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div> 
             {% empty %}
-            <li>No tasks added </li>
+            <p>No projects have been added yet.</p>
             {% endfor %}
-        </ul>
-    {% empty %}
-    <li>No projects have been added yet.</li>
-    {% endfor %}
-</ul>
-<p>
-    <a href="{% url 'tasks:new_project' %}">Add new project</a>
-</p>
+        
+    </div>
+
+<!-- <a href="{% url 'tasks:new_project' %}" class="btn btn-primary mb-4">Add new project</a> -->
+
+
 
 
 {% endblock content %}

@@ -1,10 +1,10 @@
 {% extends "tasks/base.html" %}
 {% block content %}
-<h1><a href="{% url 'tasks:task_section' task_section.id %}">{{ task_section }}</a></h1>
-<p class="text-muted">Add a new task:</p>
+<h1><a href="{% url 'tasks:project' project.id %}">{{ project }}</a></h1>
 
+<p class="text-muted">Add new task group:</p>
 <div style="width: 40rem;">
-<form action="{% url 'tasks:new_task' task_section.id %}" method='post'>
+<form action="{% url 'tasks:new_task_section' project.id %}" method='post'>
     {% csrf_token %}
     {{ form }}
     <button name='submit' class="btn btn-primary">Add task</button>

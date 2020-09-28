@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'tasks',
     'users',
 
-    #Third party apps
-    'tailwind'
+    # Third party apps.
+    'bootstrap4',
 
     # Default django apps.
     'django.contrib.admin',
@@ -127,6 +127,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
 
 # My settings
 LOGIN_URL = 'users:login'
+
+
+# Adding third party apps

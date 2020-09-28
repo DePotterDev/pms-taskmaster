@@ -1,8 +1,16 @@
 {% extends "tasks/base.html" %}
 
 {% block content %}
+{% load static %}
 
-<p>Tasks</p>
-<p>Tasks helps you with keeping up with tasks</p>
+
+<img src="{% static 'images/decor.png' %}" alt="this is a background image" id="decor">
+
+<div class="col-md-8">
+    <h1 class="index-title">Project Management System</h1>
+    <p class="text-frontpage"><span class="highlight">Project management software has the capacity to help plan, organize, and manage resource tools and develop resource estimates. <span class="logo-font">TaskMaster</span> uses multiple dependency relationship types between activities</span></p>
+    
+    <a href="{% url 'tasks:projects' %}" class="btn btn-primary btn-index mt-4">Go Projects</a>
+</div>
 
 {% endblock content %}

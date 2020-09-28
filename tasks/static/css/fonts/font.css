@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'mermaidbold';
+    src: url('mermaid1001-webfont.woff2') format('woff2'),
+         url('mermaid1001-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

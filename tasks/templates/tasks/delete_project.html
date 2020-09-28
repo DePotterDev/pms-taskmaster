@@ -1,0 +1,14 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+<h1>Are you sure you want to delete "{{project}}"</h1>
+
+
+<a href="{%url 'tasks:projects' %}">Cancel</a>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" name="Confirm">
+</form>
+
+{% endblock content %}
